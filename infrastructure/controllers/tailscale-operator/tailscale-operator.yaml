@@ -1,0 +1,43 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: tailscale-operator
+  namespace: tailscale
+spec:
+  interval: 10m
+  url: https://pkgs.tailscale.com/helmcharts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: tailscale-operator
+  namespace: tailscale
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: tailscale-operator
+      version: 1.78.x
+      sourceRef:
+        kind: HelmRepository
+        name: tailscale-operator
+  releaseName: tailscale-operator
+
+  # https://github.com/tailscale/tailscale/blob/main/cmd/k8s-operator/deploy/chart/values.yaml
+  values:
+    oauth:
+      clientId: "kUGvMXuvv211CNTRL"
+      clientSecret: "tskey-client-kUGvMXuvv211CNTRL-EKqJy3npBJLTKDrcEQVhHLv17Wc3uRMg"
+    operatorConfig:
+      resources:
+        limits:
+          memory: "128Mi"
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+      # ACL tag that operator will be tagged with. Operator must be made owner of
+      # these tags
+      # https://tailscale.com/kb/1236/kubernetes-operator/?q=operator#setting-up-the-kubernetes-operator
+      # Multiple tags are defined as array items and passed to the operator as a comma-separated string
+      defaultTags:
+        - "tag:k8s-operator"
