@@ -27,4 +27,4 @@ spec:
     service:
       annotations:
         tailscale.com/expose: "true"
-        tailscale.com/hostname: "ha.home.reub.in"
+        tailscale.com/hostname: "home-assistant"
