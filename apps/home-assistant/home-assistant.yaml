@@ -29,9 +29,6 @@ spec:
         tailscale.com/expose: "true"
         tailscale.com/hostname: "home-assistant"
     ingress:
-      enable: "true"
+      enabled: "true"
       hosts:
-        - "ha.home.reub.in"
-      tls:
-        hosts:
-          - "ha.home.reub.in"
+        - host: "ha.home.reub.in"
