@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/k3d-io/k3d/refs/heads/main/pkg/config/v1alpha5/schema.json
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: home
+servers: 1
+agents: 1
+kubeAPI:
+  host: "home.reub.in"
+  hostIP: "0.0.0.0"
+  hostPort: "6443"
+volumes:
+  - volume: /Users/reuben/cluster-data:/var/lib/rancher/k3s/storage@all
+ports:
+  - port: 80:80
+  - port: 443:443
+options:
+  k3d:
+    wait: true
+    timeout: 60s
