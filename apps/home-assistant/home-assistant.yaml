@@ -24,7 +24,7 @@ spec:
         name: home-assistant
   releaseName: home-assistant
   values:
-    ingress:
-      enabled: true
-      hosts:
-      - ha.home.reub.in
+    service:
+      annotations:
+        tailscale.com/expose: "true"
+        tailscale.com/hostname: "ha.home.reub.in"
