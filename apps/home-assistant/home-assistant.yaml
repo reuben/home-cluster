@@ -32,3 +32,6 @@ spec:
       enabled: "true"
       hosts:
         - host: "ha.home.reub.in"
+          paths:
+            - path: /
+              pathType: Prefix
