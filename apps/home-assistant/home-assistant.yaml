@@ -29,11 +29,11 @@ spec:
         tailscale.com/expose: "true"
         tailscale.com/hostname: "home-assistant"
     ingress:
-      enabled: "true"
+      enabled: true
       hosts:
         - host: "ha.home.reub.in"
           paths:
             - path: /
               pathType: Prefix
     configuration:
-      trusted_proxies: ["10.42.0.0/24"]
+      enabled: true
