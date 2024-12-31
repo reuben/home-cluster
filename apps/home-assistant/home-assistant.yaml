@@ -23,4 +23,8 @@ spec:
         kind: HelmRepository
         name: home-assistant
   releaseName: home-assistant
-  values: {}
+  values:
+    ingress:
+      enabled: true
+      hosts:
+      - ha.home.reub.in
