@@ -4,9 +4,6 @@
 # Exclude all
 /*
 
-# Exclude k3d cluster config
-/clusters/home/k3d.config.yaml
-
 # Include manifest directories
 !/apps/
 !/clusters/
