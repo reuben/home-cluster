@@ -10,7 +10,8 @@ kubeAPI:
   hostIP: "0.0.0.0"
   hostPort: "6443"
 volumes:
-  - volume: /Users/reuben/cluster-data:/var/lib/rancher/k3s/storage@all
+  - volume: /Users/reuben/cluster-data/local-path-provisioner:/var/lib/rancher/k3s/storage
+  - volume: /Users/reuben/cluster-data/host-path:/data
 ports:
   - port: 80:80
   - port: 443:443
