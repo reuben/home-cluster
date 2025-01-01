@@ -38,9 +38,9 @@ spec:
             - path: /
               pathType: Prefix
       tls:
-        hosts:
-          - ha.home.reub.in
-        secretName: home-assistant-tls-cert
+        - hosts:
+            - ha.home.reub.in
+          secretName: home-assistant-tls-cert
     configuration:
       enabled: true
     persistence:
