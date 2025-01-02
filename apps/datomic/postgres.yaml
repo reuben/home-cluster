@@ -1,0 +1,67 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: postgres
+  namespace: datomic
+spec:
+  interval: 10m
+  url: oci://registry-1.docker.io/bitnamicharts/postgresql
+  ref:
+    semver: 15.5.x
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: postgres
+  namespace: datomic
+spec:
+  interval: 10m
+  chartRef:
+    kind: OCIRepository
+    name: postgres
+  releaseName: postgres
+  values:
+    service:
+      annotations:
+        tailscale.com/expose: "true"
+    global:
+      postgresql:
+        auth:
+          postgresPassword: NP7y7gocVHLVHCTKaUPkakX4FPhFacuf
+    primary:
+      initdb:
+        user: postgres
+        password: NP7y7gocVHLVHCTKaUPkakX4FPhFacuf
+      persistence:
+        enabled: true
+        storageClass: local-path
+        size: 10Gi
+
+      # performance optimization
+      #  https://pgtune.leopard.in.ua/
+      #
+      # DB Version: 17
+      # OS Type: mac
+      # DB Type: mixed
+      # Total Memory (RAM): 10 GB
+      # CPUs num: 10
+      # Data Storage: ssd
+      #
+      extendedConfiguration: |
+        max_connections = 100
+        shared_buffers = 2560MB
+        effective_cache_size = 7680MB
+        maintenance_work_mem = 640MB
+        checkpoint_completion_target = 0.9
+        wal_buffers = 16MB
+        default_statistics_target = 100
+        random_page_cost = 1.1
+        work_mem = 3276kB
+        huge_pages = off
+        min_wal_size = 1GB
+        max_wal_size = 4GB
+        max_worker_processes = 10
+        max_parallel_workers_per_gather = 4
+        max_parallel_workers = 10
+        max_parallel_maintenance_workers = 4
