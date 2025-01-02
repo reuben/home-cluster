@@ -31,3 +31,7 @@ spec:
       interval: 12h
   values:
     installCRDs: true
+    extraArgs:
+      - --enable-certificate-owner-ref=true
+      - --dns01-recursive-nameservers-only
+      - --dns01-recursive-nameservers=1.1.1.1:53
