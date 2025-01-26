@@ -19,3 +19,4 @@ options:
   k3d:
     wait: true
     timeout: 60s
+network: host
