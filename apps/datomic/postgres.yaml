@@ -22,18 +22,18 @@ spec:
     name: postgres
   releaseName: postgres
   values:
-    global:
-      postgresql:
-        auth:
-          postgresPassword: NP7y7gocVHLVHCTKaUPkakX4FPhFacuf
+    auth:
+      existingSecret:
+        name: postgres-auth
+    passwordUpdateJob:
+      enabled: true
+      previousPasswords:
+        postgresPassword: NP7y7gocVHLVHCTKaUPkakX4FPhFacuf
     primary:
       service:
         annotations:
           tailscale.com/expose: "true"
           tailscale.com/hostname: "datomic-postgres"
-      initdb:
-        user: postgres
-        password: NP7y7gocVHLVHCTKaUPkakX4FPhFacuf
       persistence:
         enabled: true
         storageClass: local-path

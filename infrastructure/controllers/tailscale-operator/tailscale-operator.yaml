@@ -25,9 +25,6 @@ spec:
 
   # https://github.com/tailscale/tailscale/blob/main/cmd/k8s-operator/deploy/chart/values.yaml
   values:
-    oauth:
-      clientId: "kUGvMXuvv211CNTRL"
-      clientSecret: "tskey-client-kUGvMXuvv211CNTRL-EKqJy3npBJLTKDrcEQVhHLv17Wc3uRMg"
     operatorConfig:
       resources:
         limits:
