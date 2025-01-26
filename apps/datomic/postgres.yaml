@@ -23,8 +23,7 @@ spec:
   releaseName: postgres
   values:
     auth:
-      existingSecret:
-        name: postgres-auth
+      existingSecret: postgres-auth
     passwordUpdateJob:
       enabled: true
       previousPasswords:
