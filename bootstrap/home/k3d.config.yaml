@@ -4,7 +4,7 @@ kind: Simple
 metadata:
   name: home
 servers: 1
-agents: 1
+agents: 0
 kubeAPI:
   host: "home.reub.in"
   hostIP: "0.0.0.0"
@@ -19,4 +19,3 @@ options:
   k3d:
     wait: true
     timeout: 60s
-network: host

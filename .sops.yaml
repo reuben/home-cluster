@@ -1,6 +1,12 @@
 # creation rules are evaluated sequentially, the first match wins
 creation_rules:
+  # encrypt token in k3d.config.yaml
+  # - path_regex: k3d.config.yaml$
+  #   encrypted_regex: ^(token)$
+  #   age: age1wvg35rjqcqajvfk02dsegntfz0zuusn64xs4qk8pzugc7jqw538sh4597j
   # match all yaml files
   - path_regex: .yaml$
     encrypted_regex: ^(data|stringData)$
     age: age1wvg35rjqcqajvfk02dsegntfz0zuusn64xs4qk8pzugc7jqw538sh4597j
+  # otherwise encrypt everything
+  - age: age1wvg35rjqcqajvfk02dsegntfz0zuusn64xs4qk8pzugc7jqw538sh4597j
