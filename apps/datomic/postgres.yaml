@@ -26,8 +26,6 @@ spec:
       existingSecret: postgres-auth
     passwordUpdateJob:
       enabled: true
-      previousPasswords:
-        postgresPassword: NP7y7gocVHLVHCTKaUPkakX4FPhFacuf
     primary:
       service:
         annotations:
