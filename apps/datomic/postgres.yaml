@@ -25,7 +25,7 @@ spec:
     auth:
       existingSecret: postgres-auth
     passwordUpdateJob:
-      enabled: true
+      enabled: false
     primary:
       service:
         annotations:
