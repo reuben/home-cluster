@@ -39,6 +39,10 @@ spec:
           secretName: home-assistant-tls-cert
     configuration:
       enabled: true
+      forceInit: true
+      templateConfig: |-
+        homekit:
+          advertise_ip: 100.106.112.106
     persistence:
       enabled: true
       accessMode: ReadWriteOnce
