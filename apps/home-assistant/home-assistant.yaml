@@ -24,10 +24,6 @@ spec:
         name: home-assistant
   releaseName: home-assistant
   values:
-    service:
-      annotations:
-        tailscale.com/expose: "true"
-        tailscale.com/hostname: "home-assistant"
     ingress:
       enabled: true
       annotations:
